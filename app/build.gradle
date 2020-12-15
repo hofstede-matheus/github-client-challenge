@@ -26,7 +26,7 @@ android {
 
     applicationVariants.all {
         buildConfigField("String", "API_URL", "\"https://api.github.com/\"")
-        buildConfigField("String", "API_URL", "\"050e01315f1eaf087cfad5ddb3554d758050f5c5\"")
+        buildConfigField("String", "GITHUB_AUTH_TOKEN", "\"050e01315f1eaf087cfad5ddb3554d758050f5c5\"")
     }
 
     compileOptions {
