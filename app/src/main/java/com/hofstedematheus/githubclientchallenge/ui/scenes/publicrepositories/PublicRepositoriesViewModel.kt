@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.hofstedematheus.githubclientchallenge.data.core.Result
 import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
 import com.hofstedematheus.githubclientchallenge.data.repository.RepositoriesRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,7 +22,6 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
     val error: LiveData<String>
         get() = _error
 
-
     fun getPublicRepositoriesList() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.Default) {
@@ -32,20 +30,10 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
                 )
             }
 
-
-
-
             when(result) {
                 is Result.Success -> _publicRepositories.value = result.value
                 is Result.Error -> _error.value = result.message
             }
         }
-        /*CoroutineScope(Dispatchers.Main).launch {
-
-
-        }*/
-
     }
-
-
 }
