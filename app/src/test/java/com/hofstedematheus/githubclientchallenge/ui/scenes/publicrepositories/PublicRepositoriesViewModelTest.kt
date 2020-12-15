@@ -24,6 +24,7 @@ import org.junit.After
 import org.junit.Rule
 import org.koin.core.context.stopKoin
 
+@ExperimentalCoroutinesApi
 class PublicRepositoriesViewModelTest: KoinTest {
 
     val dispatcher = TestCoroutineDispatcher()
@@ -71,7 +72,23 @@ class PublicRepositoriesViewModelTest: KoinTest {
         }
     }
 
-    @ExperimentalCoroutinesApi
+    @Test
+    fun `when getPublicRepositoriesList() fails, then error should update`() {
+
+        // Arrange
+        val result = Result.Error("Error")
+
+        coEvery { publicRepositoriesRepositoryMock.getPublicRepositories() } returns result
+
+        // Act
+        viewModel.getPublicRepositoriesList()
+
+        // Assert
+        viewModel.error.value?.let { error ->
+            assert(error.isNotBlank())
+        }
+    }
+
     @After
     fun tearDown() {
         stopKoin()
