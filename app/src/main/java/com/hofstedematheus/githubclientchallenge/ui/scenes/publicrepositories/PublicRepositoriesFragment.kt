@@ -60,6 +60,13 @@ class PublicRepositoriesFragment : Fragment() {
                     binding.repositoriesRV isVisibleIf error.isNullOrEmpty()
                 }
             )
+
+            isFetchingData.observe(
+                viewLifecycleOwner,
+                { isFetchingData ->
+                    binding.loadingProgress isVisibleIf isFetchingData
+                }
+            )
         }
 
     }
