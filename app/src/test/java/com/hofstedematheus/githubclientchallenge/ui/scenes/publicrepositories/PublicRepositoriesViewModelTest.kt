@@ -15,11 +15,19 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import java.util.ArrayList
 import com.hofstedematheus.githubclientchallenge.data.core.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
 import org.junit.After
+import org.junit.Rule
 import org.koin.core.context.stopKoin
 
-
 class PublicRepositoriesViewModelTest: KoinTest {
+
+    val dispatcher = TestCoroutineDispatcher()
+
 
     val publicRepositoriesRepositoryMock = mockk<RepositoriesRepository>()
     lateinit var viewModel: PublicRepositoriesViewModel
@@ -33,8 +41,10 @@ class PublicRepositoriesViewModelTest: KoinTest {
         }
     }
 
+    @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
+        Dispatchers.setMain(dispatcher)
         startKoin {
             modules(listOf(testModule))
         }
@@ -55,18 +65,17 @@ class PublicRepositoriesViewModelTest: KoinTest {
         // Act
         viewModel.getPublicRepositoriesList()
 
-
         // Assert
-        assert(viewModel.publicRepositories.value != null)
-
         viewModel.publicRepositories.value?.let { publicRepositories ->
             assert(publicRepositories.isNotEmpty())
         }
     }
 
+    @ExperimentalCoroutinesApi
     @After
     fun tearDown() {
         stopKoin()
+        Dispatchers.resetMain()
     }
 
 }
