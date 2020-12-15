@@ -27,6 +27,7 @@ class PublicRepositoriesFragment : Fragment() {
         binding = FragmentPublicRepositoriesBinding.inflate(inflater)
 
         initUi()
+        setupListeners()
         setupViewModel()
         getPublicRepositories()
 
@@ -40,6 +41,15 @@ class PublicRepositoriesFragment : Fragment() {
                 PublicRepositoriesListAdapter(list)
             }
             repositoriesRV.setHasFixedSize(true)
+        }
+    }
+
+    private fun setupListeners() {
+        binding.swipeToRefresh.apply {
+            setOnRefreshListener {
+                getPublicRepositories()
+                this.isRefreshing = false
+            }
         }
     }
 
@@ -66,6 +76,7 @@ class PublicRepositoriesFragment : Fragment() {
                 viewLifecycleOwner,
                 { isFetchingData ->
                     binding.loadingProgress isVisibleIf isFetchingData
+                    binding.repositoriesRV isVisibleIf !isFetchingData
                 }
             )
         }
