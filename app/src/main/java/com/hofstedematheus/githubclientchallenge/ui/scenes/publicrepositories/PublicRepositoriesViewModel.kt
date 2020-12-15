@@ -3,11 +3,19 @@ package com.hofstedematheus.githubclientchallenge.ui.scenes.publicrepositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
 
-class DashboardViewModel : ViewModel() {
+class PublicRepositoriesViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val _publicRepositories = MutableLiveData<List<PublicRepository>>()
+
+    val publicRepositories: LiveData<List<PublicRepository>>
+        get() = _publicRepositories
+
+
+    fun getPublicRepositoriesList() {
+
     }
-    val text: LiveData<String> = _text
+
+
 }
