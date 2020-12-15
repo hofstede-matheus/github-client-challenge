@@ -54,6 +54,7 @@ class PublicRepositoriesViewModelTest: KoinTest {
 
     @Test
     fun `when getPublicRepositoriesList() succeeds, then publicRepositories should update`() {
+
         // Arrange
         val publicRepositoriesList = listOf<PublicRepository>(
             mockk()
@@ -86,6 +87,31 @@ class PublicRepositoriesViewModelTest: KoinTest {
         // Assert
         viewModel.error.value?.let { error ->
             assert(error.isNotBlank())
+        }
+    }
+
+    @Test
+    fun `when getPublicRepositoriesList() is fetching, then _isFetchingData should be true, and shoud be false when done fetching`() {
+        // Arrange
+        val publicRepositoriesList = listOf<PublicRepository>(
+            mockk()
+        )
+
+        val result = Result.Success(publicRepositoriesList)
+
+        coEvery { publicRepositoriesRepositoryMock.getPublicRepositories() } returns result
+
+        // Assert
+        viewModel.isFetchingData.value?.let { isFetchingData ->
+            assert(isFetchingData)
+        }
+
+        // Act
+        viewModel.getPublicRepositoriesList()
+
+        // Assert
+        viewModel.isFetchingData.value?.let { isFetchingData ->
+            assert(!isFetchingData)
         }
     }
 

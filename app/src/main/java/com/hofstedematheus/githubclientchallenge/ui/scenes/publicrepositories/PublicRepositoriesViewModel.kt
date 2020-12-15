@@ -16,7 +16,7 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
 
     private val _publicRepositories = MutableLiveData<List<PublicRepository>>()
     private val _error = MutableLiveData<String>()
-    private val _isFetchingData = MutableLiveData<Boolean>()
+    private val _isFetchingData = MutableLiveData(true)
 
     val publicRepositories: LiveData<List<PublicRepository>>
         get() = _publicRepositories
