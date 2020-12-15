@@ -16,14 +16,18 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
 
     private val _publicRepositories = MutableLiveData<List<PublicRepository>>()
     private val _error = MutableLiveData<String>()
+    private val _isFetchingData = MutableLiveData<Boolean>()
 
     val publicRepositories: LiveData<List<PublicRepository>>
         get() = _publicRepositories
     val error: LiveData<String>
         get() = _error
+    val isFetchingData: LiveData<Boolean>
+        get() = _isFetchingData
 
     fun getPublicRepositoriesList() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
+            _isFetchingData.value = true
             val result = withContext(Dispatchers.Default) {
                 repository.getPublicRepositories(
                     (0..1000).random()
@@ -34,6 +38,7 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
                 is Result.Success -> _publicRepositories.value = result.value
                 is Result.Error -> _error.value = result.message
             }
+            _isFetchingData.value = false
         }
     }
 }
