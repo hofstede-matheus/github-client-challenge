@@ -39,6 +39,7 @@ class PublicRepositoriesFragment : Fragment() {
             repositoriesRV.adapter = viewModel.publicRepositories.value?.let { list ->
                 PublicRepositoriesListAdapter(list)
             }
+            repositoriesRV.setHasFixedSize(true)
         }
     }
 

@@ -2,6 +2,7 @@ package com.hofstedematheus.githubclientchallenge.ui.scenes.publicrepositories
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hofstedematheus.githubclientchallenge.R
 import com.hofstedematheus.githubclientchallenge.core.extensions.inflate
 import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
@@ -18,7 +19,16 @@ class PublicRepositoriesListAdapter (private val list: List<PublicRepository>) :
 
         list[position].let { data ->
             with(holder.itemView) {
-                textView.text = data.name
+                cardUserTitle?.text = data.name
+                cardUserDescription?.text = data.description
+                profile_image?.let { imageProfile ->
+                    Glide
+                        .with(context)
+                        .load(data.owner.avatar_url)
+                        .centerCrop()
+                        .placeholder(R.drawable.profile_blank)
+                        .into(imageProfile)
+                }
             }
         }
     }
