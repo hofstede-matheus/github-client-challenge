@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    applicationVariants.all {
+        buildConfigField("String", "API_URL", "\"https://api.github.com/\"")
+        buildConfigField("String", "API_URL", "\"050e01315f1eaf087cfad5ddb3554d758050f5c5\"")
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
