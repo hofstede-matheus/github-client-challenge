@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/navigation_public_repositories"
         android:name="com.hofstedematheus.githubclientchallenge.ui.scenes.publicrepositories.PublicRepositoriesFragment"
-        android:label="@string/title_public_repositories"
         tools:layout="@layout/fragment_public_repositories" />
 
 </navigation>
