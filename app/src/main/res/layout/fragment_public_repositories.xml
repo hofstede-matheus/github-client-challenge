@@ -7,13 +7,23 @@
     tools:context=".ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/repositoriesRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorTitle"
         tools:itemCount="2"
         tools:listitem="@layout/item_repositories_list" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/errorTitle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:text="@string/generic_error_message"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
