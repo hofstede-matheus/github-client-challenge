@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Github Client  Challenge</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_public_repositories">Public Repositories</string>
 </resources>
