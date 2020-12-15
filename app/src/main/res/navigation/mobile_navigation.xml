@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_public_repositories">
+
+    <fragment
+        android:id="@+id/navigation_public_repositories"
+        android:name="com.hofstedematheus.githubclientchallenge.ui.scenes.publicrepositories.PublicRepositoriesFragment"
+        android:label="@string/title_public_repositories"
+        tools:layout="@layout/fragment_public_repositories" />
+
+</navigation>
