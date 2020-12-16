@@ -15,6 +15,7 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import java.util.ArrayList
 import com.hofstedematheus.githubclientchallenge.data.core.Result
+import com.hofstedematheus.githubclientchallenge.data.errors.ERROR_INVALID_USER_NAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -112,6 +113,61 @@ class PublicRepositoriesViewModelTest: KoinTest {
         // Assert
         viewModel.isFetchingData.value?.let { isFetchingData ->
             assert(!isFetchingData)
+        }
+    }
+
+    @Test
+    fun `when searchPublicRepositoryByName() succeeds, then publicRepositories should update`() {
+
+        // Arrange
+        val publicRepositoriesList = listOf<PublicRepository>(
+            mockk()
+        )
+
+        val result = Result.Success(publicRepositoriesList)
+
+        coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName("") } returns result
+
+        // Act
+        viewModel.searchPublicRepositoryByName("")
+
+        // Assert
+        viewModel.publicRepositories.value?.let { publicRepositories ->
+            assert(publicRepositories.isNotEmpty())
+            assert(publicRepositories.size == 1)
+        }
+    }
+
+    @Test
+    fun `when searchPublicRepositoryByName() find no repository, then error should update`() {
+
+        val result = Result.Error("")
+
+        coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName("") } returns result
+
+        // Act
+        viewModel.searchPublicRepositoryByName("")
+
+        // Assert
+        viewModel.error.value?.let { error ->
+            assert(error.isNotBlank())
+        }
+    }
+
+    @Test
+    fun `when given name is invalid on searchPublicRepositoryByName(), then error should update`() {
+
+        val result = Result.Error(ERROR_INVALID_USER_NAME)
+
+        coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName("") } returns result
+
+        // Act
+        viewModel.searchPublicRepositoryByName("")
+
+        // Assert
+        viewModel.error.value?.let { error ->
+            assert(error.isNotBlank())
+            assert(error == ERROR_INVALID_USER_NAME)
         }
     }
 

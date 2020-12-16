@@ -35,8 +35,36 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
             }
 
             when(result) {
-                is Result.Success -> _publicRepositories.value = result.value
-                is Result.Error -> _error.value = result.message
+                is Result.Success -> {
+                    _error.value = ""
+                    _publicRepositories.value = result.value
+                }
+                is Result.Error -> {
+                    _error.value = result.message
+                    _publicRepositories.value = listOf()
+                }
+            }
+            _isFetchingData.value = false
+        }
+    }
+
+    fun searchPublicRepositoryByName(name: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _isFetchingData.value = true
+            _error.value = ""
+            val result = withContext(Dispatchers.Default) {
+                repository.searchPublicRepositoryByName(name)
+            }
+
+            when(result) {
+                is Result.Success -> {
+                    _error.value = ""
+                    _publicRepositories.value = listOf(result.value)
+                }
+                is Result.Error -> {
+                    _error.value = result.message
+                    _publicRepositories.value = listOf()
+                }
             }
             _isFetchingData.value = false
         }
