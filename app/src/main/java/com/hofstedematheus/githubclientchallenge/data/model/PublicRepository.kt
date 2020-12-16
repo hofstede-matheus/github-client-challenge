@@ -1,6 +1,7 @@
 package com.hofstedematheus.githubclientchallenge.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PublicRepository(
 
@@ -12,7 +13,7 @@ data class PublicRepository(
 
     @SerializedName("owner")
     val owner: Owner,
-)
+): Serializable
 
 data class Owner(
     @SerializedName("avatar_url")
