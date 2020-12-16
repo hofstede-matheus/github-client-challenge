@@ -41,4 +41,8 @@ class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : View
             _isFetchingData.value = false
         }
     }
+
+    fun searchPublicRepositoryByName(name: String) {
+
+    }
 }
