@@ -7,7 +7,9 @@ No Android Studio:
 
 Direto do celular:
 - Habilite a instalação de aplicativos desconhecidos no seu Android
-- [Baixe o .apk](https://hofs.dev/github-client-challenge.apk) e instale manualmente 
+- [Baixe o .apk](https://hofs.dev/github-client-challenge.apk) e instale manualmente
+
+[Kambam do Projeto](https://github.com/hofstede-matheus/github-client-challenge/projects/1)
 
 ### Ferramentas escolhidas e porquês:
 - Kotlin : Não faz mais sentido começar um projeto com Java, além disso, Kotlin é minha linguagem de progrmação favorita, tanto para desenvolvimento mobile nativo como para backend. A sintaxe é sucinta e idiomática.
