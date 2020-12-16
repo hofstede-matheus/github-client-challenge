@@ -115,6 +115,28 @@ class PublicRepositoriesViewModelTest: KoinTest {
         }
     }
 
+    @Test
+    fun `when searchPublicRepositoryByName() succeeds, then publicRepositories should update`() {
+
+        // Arrange
+        val publicRepositoriesList = listOf<PublicRepository>(
+            mockk()
+        )
+
+        val result = Result.Success(publicRepositoriesList)
+
+        coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName() } returns result
+
+        // Act
+        viewModel.searchPublicRepositoryByName("")
+
+        // Assert
+        viewModel.publicRepositories.value?.let { publicRepositories ->
+            assert(publicRepositories.isNotEmpty())
+            assert(publicRepositories.size == 1)
+        }
+    }
+
     @After
     fun tearDown() {
         stopKoin()
