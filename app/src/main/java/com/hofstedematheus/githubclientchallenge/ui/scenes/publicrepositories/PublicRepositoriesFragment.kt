@@ -55,6 +55,7 @@ class PublicRepositoriesFragment : Fragment() {
         }
         binding.searchEditText.addDebouncedTextListener(1000L, lifecycle) { query ->
             if (query.isNotBlank()) viewModel.searchPublicRepositoryByName(query)
+            else getPublicRepositories()
         }
     }
 
@@ -72,8 +73,9 @@ class PublicRepositoriesFragment : Fragment() {
             error.observe(
                 viewLifecycleOwner,
                 { error ->
+                    binding.errorTitle.text = error
                     binding.errorTitle isVisibleIf error.isNotBlank()
-                    binding.repositoriesRV isVisibleIf error.isNullOrEmpty()
+                    binding.repositoriesRV isVisibleIf error.isBlank()
                 }
             )
 
