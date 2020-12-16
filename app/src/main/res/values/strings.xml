@@ -6,4 +6,9 @@
     <string name="search_for_repository">Digite para procurar por um repositório…</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="repository_owner">Dono do repositório:</string>
+    <string name="intro1_title">Descubra repositórios do Github</string>
+    <string name="intro1_description">São milhares para descobrir! Use a barra de procura para procurar por algum.</string>
+    <string name="intro2_title">Veja mais detalhes</string>
+    <string name="intro2_description">Se interessou por um? Clique para mais informações!</string>
+
 </resources>
