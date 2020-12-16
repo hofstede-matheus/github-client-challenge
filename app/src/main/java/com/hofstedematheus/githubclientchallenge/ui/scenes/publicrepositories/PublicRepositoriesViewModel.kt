@@ -14,7 +14,7 @@ import org.koin.core.component.KoinComponent
 
 class PublicRepositoriesViewModel(val repository: RepositoriesRepository) : ViewModel(), KoinComponent {
 
-    private val _publicRepositories = MutableLiveData<List<PublicRepository>>()
+    private val _publicRepositories = MutableLiveData<List<PublicRepository>>(listOf())
     private val _error = MutableLiveData<String>()
     private val _isFetchingData = MutableLiveData(true)
 

@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hofstedematheus.githubclientchallenge.R
 import com.hofstedematheus.githubclientchallenge.core.extensions.addDebouncedTextListener
 import com.hofstedematheus.githubclientchallenge.core.extensions.isVisibleIf
+import com.hofstedematheus.githubclientchallenge.data.constants.REPOSITORY
 import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
 import com.hofstedematheus.githubclientchallenge.databinding.FragmentPublicRepositoriesBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,7 +43,13 @@ class PublicRepositoriesFragment : Fragment() {
         binding.apply {
             repositoriesRV.layoutManager = LinearLayoutManager(activity?.applicationContext)
             repositoriesRV.adapter = viewModel.publicRepositories.value?.let { list ->
-                PublicRepositoriesListAdapter(list)
+
+                PublicRepositoriesListAdapter(list) { repository ->
+                    val bundle = bundleOf(
+                            REPOSITORY to repository
+                    )
+                    findNavController().navigate(R.id.action_navigation_public_repositories_to_navigation_repository_page, bundle)
+                }
             }
             repositoriesRV.setHasFixedSize(true)
         }
@@ -65,7 +74,12 @@ class PublicRepositoriesFragment : Fragment() {
                 viewLifecycleOwner,
                 { list ->
                     binding.repositoriesRV.apply {
-                        adapter = PublicRepositoriesListAdapter(list)
+                        adapter = PublicRepositoriesListAdapter(list) { repository ->
+                            val bundle = bundleOf(
+                                    REPOSITORY to repository
+                            )
+                            findNavController().navigate(R.id.action_navigation_public_repositories_to_navigation_repository_page, bundle)
+                        }
                     }
                 }
             )

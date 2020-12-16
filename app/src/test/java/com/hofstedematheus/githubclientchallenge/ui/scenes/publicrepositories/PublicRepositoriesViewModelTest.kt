@@ -4,25 +4,21 @@ import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
 import com.hofstedematheus.githubclientchallenge.data.repository.RepositoriesRepository
 import io.mockk.coEvery
 import io.mockk.mockk
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.koin.android.viewmodel.compat.ViewModelCompat.viewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.get
-import java.util.ArrayList
 import com.hofstedematheus.githubclientchallenge.data.core.Result
-import com.hofstedematheus.githubclientchallenge.data.errors.ERROR_INVALID_USER_NAME
+import com.hofstedematheus.githubclientchallenge.data.constants.ERROR_INVALID_USER_NAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Rule
 import org.koin.core.context.stopKoin
 
 @ExperimentalCoroutinesApi
