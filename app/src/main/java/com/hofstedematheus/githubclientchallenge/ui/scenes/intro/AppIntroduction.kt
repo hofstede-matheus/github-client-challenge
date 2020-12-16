@@ -12,10 +12,7 @@ import com.hofstedematheus.githubclientchallenge.data.constants.TEAL_200
 class AppIntroduction : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Make sure you don't call setContentView!
 
-        // Call addSlide passing your Fragments.
-        // You can use AppIntroFragment to use a pre-built fragment
         addSlide(
             AppIntroFragment.newInstance(
                 title = getString(R.string.intro1_title),
@@ -41,13 +38,11 @@ class AppIntroduction : AppIntro() {
 
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
-        // Decide what to do when the user clicks on "Skip"
         finish()
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
-        // Decide what to do when the user clicks on "Done"
         finish()
     }
 }
