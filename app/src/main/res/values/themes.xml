@@ -16,4 +16,8 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="SplashTheme" parent="Theme.GithubClientChallenge">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
 </resources>
