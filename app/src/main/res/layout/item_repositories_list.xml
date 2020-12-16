@@ -65,7 +65,7 @@
                 android:id="@+id/cardUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+                tools:text="@string/lorem_ipsum" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
