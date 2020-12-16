@@ -10,7 +10,7 @@ Direto do celular:
 - [Baixe o .apk](https://hofs.dev/github-client-challenge.apk) e instale manualmente 
 
 ### Ferramentas escolhidas e porquês:
-- Kotlin <code> <img alt="kotlin" height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/kotlin/kotlin.png"></code> : Não faz mais sentido começar um projeto com Java, além disso, Kotlin é minha linguagem de progrmação favorita, tanto para desenvolvimento mobile nativo como para backend. A sintaxe é sucinta e idiomática.
+- Kotlin : Não faz mais sentido começar um projeto com Java, além disso, Kotlin é minha linguagem de progrmação favorita, tanto para desenvolvimento mobile nativo como para backend. A sintaxe é sucinta e idiomática.
 - Arquitetura MVVM: A arquitetura em si é minimalista e cumpre o papel de seperação de camadas e facilidade para testes unitários. É a minha arquitetura padrão para qualquer projeto que começo do zero. O Android Architecture Components foi um grande acerto do time Android em relação a padronização da arquitetura.
 - Repository Design Pattern: Para tornar a ViewModel mais testável, as dependências (fontes de dados) são injetadas externamente, podendo ser um mock ou uma camada de comunicação com a API.
 - Koin: Koin é a cara de Kotlin, logo é muito produtivo de trabalhar. Apesar de eu ser um programador que me sinto mais seguro que as coisas quebrem em tempo de compilação, Koin é uma das primeiras alternativas quando penso em DI. É minimalista e integrado com o Kotlin.
