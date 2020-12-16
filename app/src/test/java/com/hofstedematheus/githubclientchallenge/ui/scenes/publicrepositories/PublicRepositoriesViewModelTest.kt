@@ -137,6 +137,22 @@ class PublicRepositoriesViewModelTest: KoinTest {
         }
     }
 
+    @Test
+    fun `when searchPublicRepositoryByName() find no repository, then error should update`() {
+
+        val result = Result.Error("")
+
+        coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName() } returns result
+
+        // Act
+        viewModel.searchPublicRepositoryByName("")
+
+        // Assert
+        viewModel.error.value?.let { error ->
+            assert(error.isNotBlank())
+        }
+    }
+
     @After
     fun tearDown() {
         stopKoin()
