@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hofstedematheus.githubclientchallenge.R
 import com.hofstedematheus.githubclientchallenge.data.constants.IS_FIRST_TIME_OPEN
+import com.hofstedematheus.githubclientchallenge.data.constants.PREFERENCES_NAME
 import com.hofstedematheus.githubclientchallenge.databinding.ActivityMainBinding
 import com.hofstedematheus.githubclientchallenge.databinding.FragmentPublicRepositoriesBinding
 import com.hofstedematheus.githubclientchallenge.ui.scenes.intro.AppIntroduction
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAppIntroduction() {
-        if(getPreferences(Context.MODE_PRIVATE).getBoolean(IS_FIRST_TIME_OPEN, true)) startActivity(
+        if(getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE).getBoolean(IS_FIRST_TIME_OPEN, true)) startActivity(
             Intent(this, AppIntroduction::class.java)
         )
     }
