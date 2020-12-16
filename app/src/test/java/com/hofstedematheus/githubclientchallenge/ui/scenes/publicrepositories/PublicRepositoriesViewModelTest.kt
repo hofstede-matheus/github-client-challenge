@@ -120,11 +120,10 @@ class PublicRepositoriesViewModelTest: KoinTest {
     fun `when searchPublicRepositoryByName() succeeds, then publicRepositories should update`() {
 
         // Arrange
-        val publicRepositoriesList = listOf<PublicRepository>(
+        val publicRepository: PublicRepository =
             mockk()
-        )
 
-        val result = Result.Success(publicRepositoriesList)
+        val result = Result.Success(publicRepository)
 
         coEvery { publicRepositoriesRepositoryMock.searchPublicRepositoryByName("") } returns result
 
