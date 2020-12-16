@@ -7,7 +7,6 @@ import com.hofstedematheus.githubclientchallenge.R
 import com.hofstedematheus.githubclientchallenge.core.extensions.inflate
 import com.hofstedematheus.githubclientchallenge.data.model.PublicRepository
 import kotlinx.android.synthetic.main.item_repositories_list.view.*
-import java.util.ArrayList
 
 class PublicRepositoriesListAdapter (private val list: List<PublicRepository>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -21,10 +20,11 @@ class PublicRepositoriesListAdapter (private val list: List<PublicRepository>) :
             with(holder.itemView) {
                 cardUserTitle?.text = data.name
                 cardUserDescription?.text = data.description
+                cardUserName?.text = data.owner.userName
                 profile_image?.let { imageProfile ->
                     Glide
                         .with(context)
-                        .load(data.owner.avatar_url)
+                        .load(data.owner.avatarUrl)
                         .centerCrop()
                         .placeholder(R.drawable.profile_blank)
                         .into(imageProfile)

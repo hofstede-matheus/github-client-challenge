@@ -12,10 +12,12 @@ data class PublicRepository(
 
     @SerializedName("owner")
     val owner: Owner,
-
 )
 
 data class Owner(
     @SerializedName("avatar_url")
-    val avatar_url: String = ""
+    val avatarUrl: String = "",
+
+    @SerializedName("login")
+    val userName: String = ""
 )

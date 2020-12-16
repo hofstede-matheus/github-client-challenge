@@ -60,6 +60,9 @@
                 app:civ_border_width="1dp" />
 
             <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/cardUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
