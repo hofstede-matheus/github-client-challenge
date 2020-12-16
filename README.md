@@ -45,3 +45,12 @@ PublicRepositoriesFragmentTest
 RepositoryPageFragmentTest
 - `shouldDisplayAllViewsOnFragmentStart`
 
+### Inspirações para o design:
+https://github.com/Ramotion/reel-search
+
+https://br.pinterest.com/pin/246079567128206277/
+
+https://dribbble.com/shots/5687261-Receive-Payment
+
+https://dribbble.com/shots/9579493-Social-app-screen
+
